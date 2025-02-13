@@ -12,6 +12,7 @@ import UnityPage from "./components/UnityPage";
 import FinalReveal from "./components/FinalReveal";
 import PromisesPage from "./components/PromisesPage";
 import ValentinePage from "./components/ValentinePage";
+import CongratulationsPage from "./components/CongratulationsPage";
 
 import back1 from "./assets/cards/bg_1.png";
 import back2 from "./assets/cards/bg_2.png";
@@ -73,6 +74,7 @@ type Page =
   | "final-reveal"
   | "promises"
   | "valentine"
+  | "congratulations"
   | "last";
 
 export const App = () => {
@@ -199,7 +201,11 @@ export const App = () => {
       case "promises":
         return <PromisesPage onNext={() => setCurrentPage("valentine")} />;
       case "valentine":
-        return <ValentinePage onNext={() => setCurrentPage("last")} />;
+        return (
+          <ValentinePage onNext={() => setCurrentPage("congratulations")} />
+        );
+      case "congratulations":
+        return <CongratulationsPage onNext={() => setCurrentPage("last")} />;
       case "last":
         return <LastPage />;
     }
